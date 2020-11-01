@@ -53,9 +53,11 @@ public class City {
     public void setWeatherForecast(){
 
         try {
+
+
             //Sets the URL encoding the city name
-            String url = "http://api.openweathermap.org/data/2.5/forecast";
-            String query = String.format("q=%s&appid=c560ccf5adc89fe21af0e8dbbadbaf6c&units=imperial",
+            String url = "https://api.openweathermap.org/data/2.5/forecast";
+            String query = String.format("q=%s&apiKey=c560ccf5adc89fe21af0e8dbbadbaf6c&units=imperial",
                     URLEncoder.encode(name, CHARSET));
 
             //Requests for and reads (in a different way) URL's input
@@ -71,7 +73,7 @@ public class City {
 
             //Parses the Json
             Gson gson = new Gson();
-            this.weatherForecast = gson.fromJson(String.valueOf(stringBuilder), WeatherForecast.class);
+            this.weatherForecast = gson.fromJson(stringBuilder.toString(), WeatherForecast.class);
 
         } catch (UnsupportedEncodingException | MalformedURLException e) {
             e.printStackTrace();
